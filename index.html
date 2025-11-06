@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashnav - Cyber Security Innovator</title>
+    <meta name="description" content="Portfolio of Aarav Mehta, MCA Cyber Security student specializing in ethical hacking and network defense">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0B0C10;
+            --neon-green:var(--accent-cyan);
+            --neon-blue: #00C8FF;
+            --text-light: #EAEAEA;
+            --card-bg: #1a1c20;
+            --accent-cyan: #7dd3c0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background: 
+                linear-gradient(90deg, var(--neon-blue) 1px, transparent 1px),
+                linear-gradient(0deg, var(--neon-green) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .matrix-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--neon-green);
+            opacity: 0.7;
+        }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            z-index: 1000;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(11, 12, 16, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 156, 0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--neon-green) !important;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-green) !important;
+            text-shadow: 0 0 8px var(--neon-green);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px var(--neon-green)); }
+            to { filter: drop-shadow(0 0 15px var(--neon-blue)); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .typed-text {
+            border-right: 2px solid var(--neon-green);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--neon-green); }
+        }
+
+        .btn-cyber {
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-green);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn-cyber:hover {
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .btn-cyber:hover::before {
+            left: 0;
+        }
+
+        .btn-cyber-alt {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .btn-cyber-alt::before {
+            background: var(--neon-blue);
+        }
+
+        .btn-cyber-alt:hover {
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 10px;
+            border: 2px solid var(--neon-green);
+            border-radius: 50%;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px var(--neon-green);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+        }
+
+        /* About Section */
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 156, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 156, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-green);
+            padding: 5px;
+            box-shadow: 0 0 30px var(--neon-green);
+            object-fit: cover;
+        }
+
+        .stats-card {
+            background: rgba(0, 255, 156, 0.05);
+            border: 1px solid var(--neon-green);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stats-card:hover {
+            background: rgba(0, 255, 156, 0.1);
+            transform: scale(1.05);
+        }
+
+        .stats-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        /* Skills Section */
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            border-radius: 10px;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Projects Section */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 156, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 10px 40px rgba(0, 255, 156, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 255, 156, 0.1), rgba(0, 200, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--neon-green);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(0, 255, 156, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--neon-green), var(--neon-blue));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border: 1px solid var(--neon-green);
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 55%;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--bg-dark);
+            border: 3px solid var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 255, 156, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 156, 0.3);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 156, 0.2);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(11, 12, 16, 0.95);
+            border-top: 1px solid rgba(0, 255, 156, 0.2);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px var(--neon-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-icon {
+                left: 30px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="matrix-text">
+            <p>INITIALIZING SYSTEM...</p>
+            <p>LOADING PORTFOLIO...</p>
+            <p style="color: var(--neon-green);">█▓▒░ 100% ░▒▓█</p>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- Animated Background -->
+    <div class="cyber-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Yashnav</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Yashnav</h1>
+                <p class="hero-subtitle">
+                    <span id="typed-text" class="typed-text"></span>
+                </p>
+                <div class="mt-4">
+                    <a href="#projects" class="btn btn-cyber">View My Work</a>
+                    <a href="" class="btn btn-cyber">Download CV</a>
+                   
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/ahilranarana81" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/yashnav-118b062aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:yashranarana81@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:7008410889"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            
+             <div class="hero-content">
+                <h1 class="hero-title">SWORN TO BE PROTECTOR</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-4">
+                    <img src="C:\Users\yashn\OneDrive\Pictures\photo.jpeg" alt="Yashnav" class="profile-img">
+                </div>
+                <div class="col-lg-8">
+                    <div class="about-card">
+                        <h3 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">MCA Cyber Security (Hons.) @ LPU</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                            Passionate cybersecurity professional specializing in ethical hacking, network defense, and digital forensics. 
+                            Currently pursuing MCA in Cyber Security (Honours) at Lovely Professional University, with expertise in 
+                            Python automation, penetration testing, and secure application development. Committed to protecting digital 
+                            infrastructure and staying ahead of emerging cyber threats.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-3">
+                                <div class="stats-card">
+                                    <div class="stats-number" data-count="15">0</div>
+                                    <p>Projects Completed</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stats-card">
+                                    <div class="stats-number" data-count="8">0</div>
+                                    <p>Workshops Attended</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="stats-card">
+                                    <div class="stats-number" data-count="3">0</div>
+                                    <p>Certifications</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-cyber mt-3">Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">SKILLS & TOOLS</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-code"></i> Programming Languages</h4>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>C / C++</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Bash Scripting</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-shield-alt"></i> Cyber Security Tools</h4>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Wireshark</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Burp Suite</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Metasploit</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Nmap / Kali Linux</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-laptop-code"></i> Web Development</h4>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML / CSS</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>React.js</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Flask / Django</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-desktop"></i> Operating Systems</h4>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Linux (Kali / Ubuntu)</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Windows Server</span>
+                                
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Network Security</span>
+                              
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Network Intrusion Detection</h3>
+                            <p>Advanced intrusion detection system using Python and machine learning to identify and alert on suspicious network traffic patterns in real-time.</p>
+                            <div class="mt-3">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Scikit-learn</span>
+                                <span class="tech-badge">Wireshark</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-cyber btn-sm me-2"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-cyber btn-cyber-alt btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Secure Login System</h3>
+                            <p>Multi-factor authentication system built with Flask featuring password hashing, session management, and protection against common vulnerabilities.</p>
+                            <div class="mt-3">
+                                <span class="tech-badge">Flask</span>
+                                <span class="tech-badge">SQLite</span>
+                                <span class="tech-badge">bcrypt</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-cyber btn-sm me-2"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-cyber btn-cyber-alt btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Phishing URL Detector</h3>
+                            <p>Machine learning model that analyzes URLs and identifies phishing attempts with 95% accuracy using Natural Language Processing techniques.</p>
+                            <div class="mt-3">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">NLP</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-cyber btn-sm me-2"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-cyber btn-cyber-alt btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Section -->
+    <section id="workshops" style="background: rgba(0, 255, 156, 0.02);">
+        <div class="container">
+            <h2 class="section-title">WORKSHOPS & PARTICIPATION</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-certificate" style="font-size: 3rem; color: var(--neon-green); margin-right: 1rem;"></i>
+                            <div>
+                                <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green); margin: 0;">Ethical Hacking Workshop</h4>
+                                <p style="margin: 0; color: var(--accent-cyan);">LPU CyberSec Club - 2024</p>
+                            </div>
+                        </div>
+                        <p>Comprehensive hands-on workshop covering penetration testing methodologies, vulnerability assessment, and exploitation techniques using industry-standard tools.</p>
+                        <button class="btn btn-cyber btn-sm mt-2" onclick="alert('Certificate viewer would open here')">
+                          <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-trophy" style="font-size: 3rem; color: var(--neon-blue); margin-right: 1rem;"></i>
+                            <div>
+                                <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-blue); margin: 0;">Cyber Security Awareness Competition</h4>
+                                <p style="margin: 0; color: var(--accent-cyan);">Dept. of MCA, LPU - 2025</p>
+                            </div>
+                        </div>
+                        <p>Participated in university-wide competition focusing on cybersecurity awareness, secure coding practices, and incident response scenarios.</p>
+                        <button class="btn btn-cyber btn-cyber-alt btn-sm mt-2" onclick="alert('Certificate viewer would open here')">
+                            <i class="fas fa-eye"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">EDUCATION & EXPERIENCE</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">MCA Cyber Security (Honours)</h4>
+                        <p style="color: var(--neon-blue); font-weight: 600;">Lovely Professional University</p>
+                        <p style="color: var(--accent-cyan);">2024 - 2026</p>
+                        <p>Specialized coursework in ethical hacking, cryptography, network security, digital forensics, and secure software development.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">Security Analyst Intern</h4>
+                        <p style="color: var(--neon-blue); font-weight: 600;">CyberLabs Inc.</p>
+                        <p style="color: var(--accent-cyan);">Summer 2025</p>
+                        <p>Conducted vulnerability assessments, performed penetration testing, and developed automated security scanning tools for enterprise clients.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">LPU CyberSec Club</h4>
+                        <p style="color: var(--neon-blue); font-weight: 600;">Active Member</p>
+                        <p style="color: var(--accent-cyan);">2024 - Present</p>
+                        <p>Organizing workshops, participating in CTF competitions, and collaborating on cybersecurity research projects with fellow students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" style="background: rgba(0, 200, 255, 0.02);">
+        <div class="container">
+            <h2 class="section-title">ACHIEVEMENTS</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="about-card text-center">
+                        <i class="fas fa-award" style="font-size: 3rem; color: var(--neon-green); margin-bottom: 1rem;"></i>
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">Top Performer</h4>
+                        <p style="color: var(--accent-cyan); font-weight: 600;">Cyber Awareness Challenge 2025</p>
+                        <p>Recognized for outstanding performance in university-wide cybersecurity competition.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="about-card text-center">
+                        <i class="fas fa-code" style="font-size: 3rem; color: var(--neon-blue); margin-bottom: 1rem;"></i>
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-blue);">Hackathon Participant</h4>
+                        <p style="color: var(--accent-cyan); font-weight: 600;">LPU CyberSec Club 2024</p>
+                        <p>Developed innovative security solution during 24-hour coding marathon.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="about-card text-center">
+                        <i class="fas fa-certificate" style="font-size: 3rem; color: var(--neon-green); margin-bottom: 1rem;"></i>
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green);">Multiple Certifications</h4>
+                        <p style="color: var(--accent-cyan); font-weight: 600;">Industry Recognition</p>
+                        <p>Completed 3 professional certifications in ethical hacking and penetration testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">LET'S WORK TOGETHER</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-form">
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green); margin-bottom: 1.5rem;">Send Me A Message</h4>
+                        <form id="contactForm">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-cyber w-100">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form h-100 d-flex flex-column justify-content-center">
+                        <h4 style="font-family: 'Orbitron', sans-serif; color: var(--neon-blue); margin-bottom: 1.5rem;">Contact Information</h4>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--neon-green); margin-right: 1rem;"></i>
+                                <div>
+                                    <p style="margin: 0; color: var(--accent-cyan); font-size: 0.9rem;">Email</p>
+                                    <a href="mailto:aaravmehta@lpu.in" style="color: var(--text-light); text-decoration: none;">aaravmehta@lpu.in</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-phone" style="font-size: 1.5rem; color: var(--neon-green); margin-right: 1rem;"></i>
+                                <div>
+                                    <p style="margin: 0; color: var(--accent-cyan); font-size: 0.9rem;">Phone</p>
+                                    <a href="tel:7008410889" style="color: var(--text-light); text-decoration: none;">+91 7008410889</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: var(--neon-green); margin-right: 1rem;"></i>
+                                <div>
+                                    <p style="margin: 0; color: var(--accent-cyan); font-size: 0.9rem;">Location</p>
+                                    <p style="margin: 0; color: var(--text-light);">Kharar, Punjab, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links text-center">
+                            <a href="https://github.com/ahilranarana81" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/yashnav-118b062aa" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:yashranarana81@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin: 0; font-size: 0.9rem;">Copyright © 2025 Aarav Mehta. All Rights Reserved.</p>
+            <p style="margin: 0.5rem 0 0 0; color: var(--accent-cyan);">Built with ❤️ using Bootstrap + CSS + JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Typing Effect
+        const typedTextElement = document.getElementById('typed-text');
+        const textArray = [
+            'Securing the Digital World',
+            'Ethical Hacker',
+            'Cyber Security Expert',
+            'Tech Explorer'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentText = textArray[textIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scroll-progress').style.width = scrollPercentage + '%';
+
+            // Back to Top Button
+            const backToTop = document.getElementById('back-to-top');
+            if (scrollTop > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animate Stats Counter
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate Stats
+                    if (entry.target.classList.contains('stats-number')) {
+                        animateCounter(entry.target);
+                    }
+                    
+                    // Animate Skill Bars
+                    if (entry.target.classList.contains('skill-progress')) {
+                        const progress = entry.target.getAttribute('data-progress');
+                        entry.target.style.width = progress + '%';
+                    }
+
+                    // Add fade-in animation
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial state for animations
+            document.querySelectorAll('.stats-card, .skill-category, .project-card, .about-card, .timeline-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+            });
+
+            // Observe all animated elements
+            document.querySelectorAll('.stats-number').forEach(el => observer.observe(el));
+            document.querySelectorAll('.skill-progress').forEach(el => observer.observe(el));
+            document.querySelectorAll('.stats-card, .skill-category, .project-card, .about-card, .timeline-item').forEach(el => observer.observe(el));
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            e.target.reset();
+        });
+
+        // Active Navigation Link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
